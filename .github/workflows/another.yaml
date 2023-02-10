@@ -1,7 +1,7 @@
 name: another context
 on:
   workflow_run:
-    workflows: [test, build]
+    workflows: [test, asdfasdf]
     types: [completed]
     branches: [main]
 jobs:
