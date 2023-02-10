@@ -1,4 +1,4 @@
-name: another context
+name: release
 on:
   workflow_run:
     workflows: [test, build]
