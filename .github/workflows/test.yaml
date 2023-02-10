@@ -6,3 +6,19 @@ jobs:
     steps:
       - name: testing
         run: echo "tested"
+  update:
+    name: update go pkg with new release
+    runs-on: ubuntu-latest
+    needs: release-on-push
+    steps:
+      - name: setup go server
+        uses: actions/setup-go@v1
+        with:
+          go-version: "1.19"
+      - name: update go pkg with new release
+        env:
+          GOPROXY: https://proxy.golang.org
+          GO111MODULE: "on"
+          VERSION: 1.0.0
+        run: |
+          go get github.com/${GITHUB_REPOSITORY}@v${VERSION}
