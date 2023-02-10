@@ -22,7 +22,8 @@ jobs:
         env:
           GOPROXY: https://proxy.golang.org
           GO111MODULE: "on"
-          VERSION: ${{needs.test.output.version}}
+          VERSION: ${{needs.test.outputs.version}}
         run: |
+          echo "version: ${VERSION} outputs: ${{needs.test.outputs.version}}"
           go mod init pipeline
           go get github.com/gritzkoo/golang-health-checker-lw@v${VERSION}
