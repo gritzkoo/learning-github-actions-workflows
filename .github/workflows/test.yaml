@@ -19,6 +19,6 @@ jobs:
         env:
           GOPROXY: https://proxy.golang.org
           GO111MODULE: "on"
-          VERSION: 1.0.0
+          VERSION: 1.0.1
         run: |
-          go get github.com/${GITHUB_REPOSITORY}@v${VERSION}
+          go install github.com/gritzkoo/golang-health-checker-lw@v${VERSION}
