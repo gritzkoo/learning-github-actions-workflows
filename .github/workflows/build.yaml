@@ -3,7 +3,6 @@ on:
   workflow_run:
     workflows: [test]
     types: [completed]
-  push:
 jobs:
   gobuild:
     runs-on: ubuntu-latest
