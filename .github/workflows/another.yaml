@@ -1,18 +1,12 @@
 name: another context
 on:
   workflow_run:
-    workflows:
-      - test
-      - build
-    types:
-      - completed
-    branches:
-      - main
+    workflows: [test, build]
+    types: [completed]
+    branches: [main]
 jobs:
   go:
     runs-on: ubuntu-latest
     steps:
       - name: go
         run: echo "works"
-
-

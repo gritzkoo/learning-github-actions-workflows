@@ -1,10 +1,8 @@
 name: build
 on:
   workflow_run:
-    workflows:
-      - test
-    types:
-      - completed
+    workflows: [test]
+    types: [completed]
 jobs:
   gobuild:
     runs-on: ubuntu-latest
