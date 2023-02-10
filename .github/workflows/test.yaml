@@ -4,11 +4,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     outputs:
-      version: ${{steps.ola.outputs.version}}
+      version: ${{steps.relase.outputs.version}}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: testing
-        id: ola
-        run: echo "version=1.0.1" >> $GITHUB_OUTPUT
+      # - name: testing
+      #   id: ola
+      #   run: echo "version=1.0.1" >> $GITHUB_OUTPUT
+      - uses: rymndhng/release-on-push-action@master
+        id: relase
+        with:
+          bump_version_scheme: patch
   update:
     name: update go pkg with new release
     runs-on: ubuntu-latest
@@ -24,6 +30,5 @@ jobs:
           GO111MODULE: "on"
           VERSION: ${{needs.test.outputs.version}}
         run: |
-          echo "version: ${VERSION} outputs: ${{needs.test.outputs.version}}"
           go mod init pipeline
           go get github.com/gritzkoo/golang-health-checker-lw@v${VERSION}
