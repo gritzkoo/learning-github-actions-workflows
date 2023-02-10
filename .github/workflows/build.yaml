@@ -1,4 +1,4 @@
-name: asdfasdf
+name: build
 on:
   workflow_run:
     workflows: [test]
