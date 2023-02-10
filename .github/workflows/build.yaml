@@ -1,18 +1,13 @@
-name: another context
+name: build
 on:
   workflow_run:
     workflows:
       - test
-      - build
     types:
       - completed
-    branches:
-      - main
 jobs:
-  go:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: go
-        run: echo "works"
-
-
+      - name: build stuff
+        run: echo "builded"
